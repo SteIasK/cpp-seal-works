@@ -1,0 +1,96 @@
+/* 全局设置 */
+QMainWindow {
+    background-color: #F5F7FA; /* 浅灰背景，适合现代风格 */
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* 标签样式 */
+QLabel {
+    color: #2C3E50; /* 深灰色文字 */
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5px;
+}
+
+/* 输入框样式 */
+QLineEdit#salary1Input, QLineEdit#salary2Input {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D9E6;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    color: #2C3E50;
+}
+
+QLineEdit#salary1Input:focus, QLineEdit#salary2Input:focus {
+    border: 2px solid #3498DB; /* 蓝色边框，焦点时高亮 */
+    background-color: #F8FBFF;
+}
+
+/* 按钮样式 */
+QPushButton#encryptButton, QPushButton#compareButton {
+    background-color: #3498DB; /* 蓝色按钮 */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+QPushButton#encryptButton:hover, QPushButton#compareButton:hover {
+    background-color: #2980B9; /* 悬停时稍暗 */
+}
+
+QPushButton#encryptButton:pressed, QPushButton#compareButton:pressed {
+    background-color: #206694; /* 按下时更暗 */
+}
+
+/* 状态和结果标签 */
+QLabel#statusLabel, QLabel#resultLabel, QLabel#ciphertextLabel {
+    color: #34495E;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #ECF0F1;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* 密文输出区域 */
+QTextEdit#ciphertextOutput {
+    background-color: #FFFFFF;
+    border: 1px solid #D1D9E6;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: "Consolas", monospace; /* 等宽字体，适合显示密文 */
+    font-size: 12px;
+    color: #2C3E50;
+}
+
+QTextEdit#ciphertextOutput:focus {
+    border: 2px solid #3498DB;
+}
+
+/* 滚动条样式 */
+QTextEdit#ciphertextOutput QScrollBar:vertical {
+    border: none;
+    background: #ECF0F1;
+    width: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QTextEdit#ciphertextOutput QScrollBar::handle:vertical {
+    background: #3498DB;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+QTextEdit#ciphertextOutput QScrollBar::add-line:vertical, QTextEdit#ciphertextOutput QScrollBar::sub-line:vertical {
+    background: none;
+}
+
+QTextEdit#ciphertextOutput QScrollBar::add-page:vertical, QTextEdit#ciphertextOutput QScrollBar::sub-page:vertical {
+    background: none;
+}
