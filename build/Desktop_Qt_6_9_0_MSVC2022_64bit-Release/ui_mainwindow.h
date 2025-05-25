@@ -11,11 +11,14 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -26,78 +29,94 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
+    QGroupBox *groupBox;
+    QGridLayout *gridLayout;
     QLabel *label;
-    QLineEdit *salary1Input;
+    QLineEdit *input1;
     QLabel *label_2;
-    QLineEdit *salary2Input;
-    QPushButton *encryptButton;
+    QLineEdit *input2;
+    QHBoxLayout *horizontalLayout;
     QPushButton *compareButton;
-    QLabel *statusLabel;
+    QPushButton *compareFloatButton;
+    QPushButton *loadFileButton;
     QLabel *resultLabel;
-    QLabel *ciphertextLabel;
-    QTextEdit *ciphertextOutput;
+    QLabel *encryptedLabel;
+    QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(400, 400);
+        MainWindow->resize(600, 500);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName("verticalLayout");
-        label = new QLabel(centralwidget);
+        groupBox = new QGroupBox(centralwidget);
+        groupBox->setObjectName("groupBox");
+        gridLayout = new QGridLayout(groupBox);
+        gridLayout->setObjectName("gridLayout");
+        label = new QLabel(groupBox);
         label->setObjectName("label");
 
-        verticalLayout->addWidget(label);
+        gridLayout->addWidget(label, 0, 0, 1, 1);
 
-        salary1Input = new QLineEdit(centralwidget);
-        salary1Input->setObjectName("salary1Input");
+        input1 = new QLineEdit(groupBox);
+        input1->setObjectName("input1");
 
-        verticalLayout->addWidget(salary1Input);
+        gridLayout->addWidget(input1, 0, 1, 1, 1);
 
-        label_2 = new QLabel(centralwidget);
+        label_2 = new QLabel(groupBox);
         label_2->setObjectName("label_2");
 
-        verticalLayout->addWidget(label_2);
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
 
-        salary2Input = new QLineEdit(centralwidget);
-        salary2Input->setObjectName("salary2Input");
+        input2 = new QLineEdit(groupBox);
+        input2->setObjectName("input2");
 
-        verticalLayout->addWidget(salary2Input);
+        gridLayout->addWidget(input2, 1, 1, 1, 1);
 
-        encryptButton = new QPushButton(centralwidget);
-        encryptButton->setObjectName("encryptButton");
 
-        verticalLayout->addWidget(encryptButton);
+        verticalLayout->addWidget(groupBox);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
         compareButton = new QPushButton(centralwidget);
         compareButton->setObjectName("compareButton");
 
-        verticalLayout->addWidget(compareButton);
+        horizontalLayout->addWidget(compareButton);
 
-        statusLabel = new QLabel(centralwidget);
-        statusLabel->setObjectName("statusLabel");
+        compareFloatButton = new QPushButton(centralwidget);
+        compareFloatButton->setObjectName("compareFloatButton");
 
-        verticalLayout->addWidget(statusLabel);
+        horizontalLayout->addWidget(compareFloatButton);
+
+        loadFileButton = new QPushButton(centralwidget);
+        loadFileButton->setObjectName("loadFileButton");
+
+        horizontalLayout->addWidget(loadFileButton);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         resultLabel = new QLabel(centralwidget);
         resultLabel->setObjectName("resultLabel");
+        resultLabel->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(resultLabel);
 
-        ciphertextLabel = new QLabel(centralwidget);
-        ciphertextLabel->setObjectName("ciphertextLabel");
+        encryptedLabel = new QLabel(centralwidget);
+        encryptedLabel->setObjectName("encryptedLabel");
+        encryptedLabel->setMinimumHeight(60);
+        encryptedLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+        encryptedLabel->setWordWrap(true);
 
-        verticalLayout->addWidget(ciphertextLabel);
-
-        ciphertextOutput = new QTextEdit(centralwidget);
-        ciphertextOutput->setObjectName("ciphertextOutput");
-        ciphertextOutput->setReadOnly(true);
-
-        verticalLayout->addWidget(ciphertextOutput);
+        verticalLayout->addWidget(encryptedLabel);
 
         MainWindow->setCentralWidget(centralwidget);
+        statusbar = new QStatusBar(MainWindow);
+        statusbar->setObjectName("statusbar");
+        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -106,14 +125,17 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Homomorphic Encryption Demo", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\267\245\350\265\204 1:", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\267\245\350\265\204 2:", nullptr));
-        encryptButton->setText(QCoreApplication::translate("MainWindow", "\345\212\240\345\257\206\346\225\260\346\215\256", nullptr));
-        compareButton->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\276\203\345\267\245\350\265\204", nullptr));
-        statusLabel->setText(QCoreApplication::translate("MainWindow", "\347\212\266\346\200\201: \347\255\211\345\276\205\350\276\223\345\205\245", nullptr));
-        resultLabel->setText(QCoreApplication::translate("MainWindow", "\347\273\223\346\236\234: ", nullptr));
-        ciphertextLabel->setText(QCoreApplication::translate("MainWindow", "\345\212\240\345\257\206\345\257\206\346\226\207:", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\350\226\252\350\265\204\345\212\240\345\257\206\346\257\224\350\276\203\347\263\273\347\273\237", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("MainWindow", "\350\276\223\345\205\245\345\214\272\345\237\237", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "\350\226\252\350\265\2041\357\274\232", nullptr));
+        input1->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\347\254\254\344\270\200\344\270\252\350\226\252\350\265\204\345\200\274", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "\350\226\252\350\265\2042\357\274\232", nullptr));
+        input2->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\267\350\276\223\345\205\245\347\254\254\344\272\214\344\270\252\350\226\252\350\265\204\345\200\274", nullptr));
+        compareButton->setText(QCoreApplication::translate("MainWindow", "\346\225\264\346\225\260\346\257\224\350\276\203", nullptr));
+        compareFloatButton->setText(QCoreApplication::translate("MainWindow", "\346\265\256\347\202\271\346\225\260\346\257\224\350\276\203", nullptr));
+        loadFileButton->setText(QCoreApplication::translate("MainWindow", "\344\273\216\346\226\207\344\273\266\345\212\240\350\275\275", nullptr));
+        resultLabel->setText(QCoreApplication::translate("MainWindow", "\346\257\224\350\276\203\347\273\223\346\236\234\345\260\206\345\234\250\350\277\231\351\207\214\346\230\276\347\244\272", nullptr));
+        encryptedLabel->setText(QCoreApplication::translate("MainWindow", "\345\212\240\345\257\206\346\225\260\346\215\256\345\260\206\345\234\250\350\277\231\351\207\214\346\230\276\347\244\272", nullptr));
     } // retranslateUi
 
 };

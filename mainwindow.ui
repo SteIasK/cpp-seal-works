@@ -6,80 +6,107 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>400</height>
+    <width>600</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Homomorphic Encryption Demo</string>
+   <string>薪资加密比较系统</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>输入工资 1:</string>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>输入区域</string>
       </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>薪资1：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="input1">
+         <property name="placeholderText">
+          <string>请输入第一个薪资值</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>薪资2：</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="input2">
+         <property name="placeholderText">
+          <string>请输入第二个薪资值</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="salary1Input"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>输入工资 2:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="salary2Input"/>
-    </item>
-    <item>
-     <widget class="QPushButton" name="encryptButton">
-      <property name="text">
-       <string>加密数据</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="compareButton">
-      <property name="text">
-       <string>比较工资</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="statusLabel">
-      <property name="text">
-       <string>状态: 等待输入</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="compareButton">
+        <property name="text">
+         <string>整数比较</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="compareFloatButton">
+        <property name="text">
+         <string>浮点数比较</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="loadFileButton">
+        <property name="text">
+         <string>从文件加载</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QLabel" name="resultLabel">
       <property name="text">
-       <string>结果: </string>
+       <string>比较结果将在这里显示</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="ciphertextLabel">
+     <widget class="QLabel" name="encryptedLabel">
+      <property name="minimumHeight">
+       <number>60</number>
+      </property>
       <property name="text">
-       <string>加密密文:</string>
+       <string>加密数据将在这里显示</string>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QTextEdit" name="ciphertextOutput">
-      <property name="readOnly">
+      <property name="alignment">
+       <set>Qt::AlignLeft | Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
        <bool>true</bool>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
-</ui>
+</ui> 
